@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 导入 properties 文件 -->
+    <properties resource="db.properties"/>
+
+    <!-- 用类型别名来减少类完全限定名的冗余 -->
+    <typeAliases>
+        <typeAlias type="com.zhao.pojo.User" alias="User"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 数据源配置 <driver, url, username, password> -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 绑定注册 com.zhao.mapper.xml 文件 -->
+    <mappers>
+        <mapper resource="com/zhao/mapper/UserMapper.xml"/>
+        <!-- 以下两种方式需要 mapper.xml 文件和对应接口在同一目录下 -->
+        <!-- <mapper class="com.zhao.mapper.UserMapper"/> -->
+        <!-- <package name="com.zhao.mapper.UserMapper"/> -->
+    </mappers>
+
+</configuration>
