@@ -1,0 +1,8 @@
+1. 建库建表，准备实验数据库
+2. 新建 Maven 项目，导入相关 jar 包，配置避免静态资源过滤
+3. 配置 Mybatis 核心配置文件，主要包括 environment 的配置
+4. 编写 MybatisUtil 工具类，获取 SqlSession 连接
+5. 创建实体类
+6. 创建 Mapper 接口
+7. 实现对应的 Mapper.xml 文件，并绑定注册到核心配置文件中
+8. Junit 测试
