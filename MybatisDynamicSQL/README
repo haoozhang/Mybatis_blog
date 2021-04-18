@@ -1,0 +1,42 @@
+1. 建库建表，准备实验数据库
+2. 新建 Maven 项目，导入相关 jar 包，配置避免静态资源过滤
+3. 配置 Mybatis 核心配置文件，主要包括 environment 的配置
+4. 编写 MybatisUtil 工具类，获取 SqlSession 连接
+5. 创建实体类
+6. 创建 Mapper 接口
+7. 实现对应的 Mapper.xml 文件，并绑定注册到核心配置文件中
+8. Junit 测试
+
+------
+
+CRUD 操作主要集中在最后三步：创建接口、实现 Mapper 接口、Junit 测试
+
+------
+
+- ResultMap 用于映射实体类属性名和数据库表字段名不一致的情况
+- 在配置文件的 settings 标签设置日志工厂实现 (Stdout/Log4j)
+- 通过万能 Map 传入 startIndex 和 pageSize 两个参数实现 Limit 分页查询
+
+------
+
+- 注解表达力十分有限
+- 重载 sqlSessionFactory.openSession(flag) 方法，使之自动提交事务
+- @Param 注解用于给方法参数起一个名字，建议基本类型一定使用
+
+------
+
+- Lombok: @Data, @AllArgsConstructor, @NoArgsConstructor
+* 多对一: association
+  * 查询嵌套: property:实体类属性名, javaType:属性类型, column:多对一表中的列名, 要传递给子查询
+  * 结果嵌套:
+* 一对多: collection
+  * 查询嵌套: property:实体类属性名, javaType:集合类型, ofType:集合成员类型, column: 一对多表的主键, 要传递给子查询
+  * 结果嵌套:
+
+------
+
+- If:
+- Where:
+- Set
+- Choose
+- SQL 片段:

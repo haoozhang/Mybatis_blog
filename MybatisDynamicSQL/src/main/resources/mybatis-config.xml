@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 导入 properties 文件 -->
+    <properties resource="db.properties"/>
+
+    <settings>
+        <!-- 驼峰自动转换 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!-- 用类型别名来减少类完全限定名的冗余 -->
+    <typeAliases>
+        <typeAlias type="com.zhao.pojo.Blog" alias="blog"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 数据源配置 <driver, url, username, password> -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 绑定注册 com.zhao.mapper.xml 文件 -->
+    <mappers>
+        <mapper class="com.zhao.mapper.BlogMapper"/>
+    </mappers>
+
+</configuration>
